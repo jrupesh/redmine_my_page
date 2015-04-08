@@ -1,7 +1,7 @@
 # English strings go here for Rails i18n
 en:
   label_my_activity_enable: Enable Activity listing in MyPage.
-  em_my_activity_enable: Check this to enable Activity page listing in the users My Page.\nSome bugs persist in the core Redmine activity fetcher.
+  em_my_activity_enable: Check this to enable Activity page listing in the users My Page. Some bugs persist in the core Redmine activity fetcher.
 
   label_select_query: Select Queries
   label_update_query: Update Query Selection
