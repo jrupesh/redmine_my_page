@@ -1,0 +1,15 @@
+<%= form_tag(updatemyquery_path(:type => formtype), :id => "block-form", :method => :post) do %>
+  <div class="box tabular">
+    <% if formtype == 'my_cust_query' %>
+      <p><%= label_tag "custom_limit", l(:label_custom_query_limit)  %>
+        <%= text_field_tag "#{formtype}[limit]", custum_query && custum_query[:limit].nil? ? 10 : custum_query[:limit],
+          :id => 'custom_limit' %></p>
+    <% end %>
+    <p><%= label_tag "custom_query_ids", l(:label_custom_queries)  %>
+      <%= select_tag     "#{formtype}[query_ids][]", options_for_select(queries,
+        custum_query && custum_query[:query_ids].nil? ? "" : custum_query[:query_ids]  ),
+         :multiple => formtype == 'my_cust_query' ? true : false, :size => 10,
+         :id => 'custom_query_ids', :required => true %></p>
+  </div>
+  <%= submit_tag l(:button_update) %>
+<% end %>

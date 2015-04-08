@@ -1,0 +1,18 @@
+<% if Setting.plugin_redmine_my_page["my_activity_enable"] == "1" %>
+  <div id="my-activities-<%= "#{query_id}" %>"></div>
+  <% query = IssueQuery.find_by_id(query_id) %>
+
+  <script type="text/javascript">
+    $.ajax({
+        url: "<%= query.project_id.nil? ? activity_path(:query_id => query_id) :
+                  project_activity_path( :id => query.project_id, :query_id => query_id ) %>",
+        cache: false,
+        success: function(html){
+          $("#my-activities-"+ "<%= query_id %>").append(html);
+        }
+    });
+  </script>
+
+<% else %>
+  <h3> <%= l(:label_activity_not_enabled) %></h3>
+<% end %>

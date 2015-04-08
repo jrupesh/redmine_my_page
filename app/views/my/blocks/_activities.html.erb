@@ -1,0 +1,29 @@
+<% if Setting.plugin_redmine_my_page["my_activity_enable"] == "1" %>
+  <% if !user.pref[:others]["my_activity"].nil? %>
+    <div class="contextual">
+      <% if user.pref[:others]["my_activity"][:query_ids].empty? %>
+        <%= link_to l(:label_select_activities), myqueryform_path(:type => 'my_activity'), :remote => true, :class => 'icon icon-add' %>
+      <% elsif user.pref[:others]["my_activity"][:query_ids].any? %>
+        <%= link_to l(:label_update_activities), myqueryform_path(:type => 'my_activity'), :remote => true, :class => 'icon icon-edit' %>
+      <% end %>
+    </div>
+  <% else %>
+    <% if user.pref[:others]["my_activity"].nil? && controller.action_name == 'page' %>
+      <div class="contextual"><%= link_to l(:label_select_activities), myqueryform_path(:type => 'my_activity'), :remote => true, :class => 'icon icon-add' %></div>
+    <% end %>
+    <h3><%= l(:label_my_activities) %></h3>
+  <% end %>
+
+  <div id='myactivityedit' style='display:none;'></div>
+  <div id='myactivities'>
+    <% if !user.pref[:others]["my_activity"].nil? && user.pref[:others]["my_activity"][:query_ids].any? %>
+      <% user.pref[:others]["my_activity"][:query_ids].each do |queryid| %>
+        <%= render :partial => "my_page_activities", :locals => { :query_id => queryid,
+                :query_limit => user.pref[:others]["my_activity"][:limit] } %>
+        <hr>
+      <% end -%>
+    <% end -%>
+  </div>
+<% else %>
+  <h3> <%= l(:label_activity_not_enabled) %></h3>
+<% end %>
