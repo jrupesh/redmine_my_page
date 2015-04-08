@@ -11,3 +11,6 @@ en:
   label_my_activities: Activity
 
   label_activity_not_enabled: Activity Listing in My Page is not enabled.
+
+  label_custom_queries: Select Query
+  label_custom_query_limit: Limit Issue List
