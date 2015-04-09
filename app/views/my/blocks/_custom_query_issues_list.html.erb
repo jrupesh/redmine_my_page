@@ -1,28 +1,23 @@
-<% if !user.pref[:others]["my_cust_query"].nil? %>
+<% my_cust_query = user.pref.my_cust_query
+  if !my_cust_query.nil? %>
   <div class="contextual">
-    <% if user.pref[:others]["my_cust_query"][:query_ids].empty? %>
+    <% if my_cust_query[:query_ids].empty? && controller.action_name == 'page' %>
       <%= link_to l(:label_select_query), myqueryform_path(:type => 'my_cust_query'), :remote => true, :class => 'icon icon-add' %>
-    <% elsif user.pref[:others]["my_cust_query"][:query_ids].any? %>
+    <% elsif my_cust_query[:query_ids].any? %>
       <%= link_to l(:label_update_query), myqueryform_path(:type => 'my_cust_query'), :remote => true, :class => 'icon icon-edit' %>
     <% end %>
   </div>
-<% else %>
-  <% if user.pref[:others]["my_cust_query"].nil? && controller.action_name == 'page' %>
-    <div class="contextual">
-      <%= link_to l(:label_select_query), myqueryform_path(:type => 'my_cust_query'), :remote => true, :class => 'icon icon-add' %>
-    </div>
+  <% if my_cust_query[:query_ids].empty? %>
+    <h3><%= l(:label_my_custom_queries) %></h3>
   <% end %>
-  <h3>
-    <%= l(:label_my_custom_queries) %>
-  </h3>
 <% end %>
 
 <div id='myqueryedit' style='display:none;'></div>
 <div id='mycustomquery'>
-  <% if !user.pref[:others]["my_cust_query"].nil? && user.pref[:others]["my_cust_query"][:query_ids].any? %>
-    <% user.pref[:others]["my_cust_query"][:query_ids].each do |queryid| %>
+  <% if !my_cust_query.nil? && my_cust_query[:query_ids].any? %>
+    <% my_cust_query[:query_ids].each do |queryid| %>
       <%= render :partial => "my_queries_issue_list", :locals => { :query_id => queryid,
-              :query_limit => user.pref[:others]["my_cust_query"][:limit] } %>
+              :query_limit => my_cust_query[:limit] } %>
       <hr>
     <% end -%>
   <% end -%>

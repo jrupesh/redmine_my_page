@@ -1,5 +1,13 @@
-Redmine "my page" queries
+Redmine "my page" Plugins
 =======================
 
-Add Saved Queries and Filtered Activities to "my page" in redmine
+The Plugins aims at providing some user specific customization in redmine.
+
+* The user can select Custom Queries defined in his projects to be listed in My Page.
+
+* The user can select his selected or filtered activities.
+
+* The plugin also provides the default page to be shown after login into the system.
+This can be the My Page or any Projects Issue List or Filtered Issue List.
+
 Tested as compatible with Redmine v3.0.1

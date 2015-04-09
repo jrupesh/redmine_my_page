@@ -2,6 +2,10 @@ require 'redmine'
 require 'patches/my_controller_patch'
 require 'patches/activities_controller_patch'
 
+ActionDispatch::Callbacks.to_prepare do
+  require_dependency 'hooks/redmine_my_page_hook'
+end
+
 Redmine::Plugin.register :redmine_my_page do
   name 'My Page Customization'
   author 'Rupesh J'
@@ -14,6 +18,8 @@ Redmine::Plugin.register :redmine_my_page do
   Rails.configuration.to_prepare do
     MyController.send :include, Patches::MyControllerPatch
     ActivitiesController.send(:include, Patches::ActivitiesControllerPatch)
+    WelcomeController.send(:include, Patches::WelcomeControllerPatch)
+
+    UserPreference.send(:include, Patches::UserPreferencePatch)
   end
 end
-
