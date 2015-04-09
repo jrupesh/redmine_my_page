@@ -9,7 +9,7 @@ module Hooks
       # 1) Issue List of a project
       # 2) Custom Query Issue List.
       # 3) My Page
-      selection_options = [[l(:label_my_page), "my_page" ]]
+      selection_options = [[l(:label_my_page), [ [l(:label_my_page), "my_page"]] ]]
       selection_options += [[ 'Issue List of Project', Project.visible.includes(:enabled_modules).
                     select { |p| p if p.module_enabled?("issue_tracking") }.
                     map { |p| ["#{p.name}", "p-#{p.id}" ] }]]
