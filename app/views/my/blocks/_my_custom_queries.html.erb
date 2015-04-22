@@ -8,10 +8,11 @@ if my_queries.any? %>
     </thead>
     <tbody>
     <% my_queries.each_with_index do |my_query,index|
+      next if !my_query.project.nil? && my_query.project.archived?
       param_hash = my_query.project_id.nil? ? { :query_id => my_query.id } : { :project_id => my_query.project_id, :query_id => my_query.id } %>
         <tr id="myquery-<%= index %>" class="<%= cycle('odd', 'even') %>">
           <td class="id"><%= index + 1 %></td>
-          <td class="project"><%= link_to_project(my_query.project) %></td>
+          <td class="project"><%= my_query.project.nil? ? l(:label_project_all) : link_to_project(my_query.project) %></td>
           <td class="tracker"><%= link_to "#{my_query.name}", issues_path( param_hash ), :target => '_blank' %></td>
         </tr>
     <% end %>
