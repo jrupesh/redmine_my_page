@@ -1,24 +1,26 @@
 <% query = IssueQuery.find_by_id(query_id)
-   query_issues = Issue.joins(:status, :tracker, :project, :priority).where(
-    query.statement).limit(query_limit).to_a
-   query_issues_count = Issue.joins(:status, :tracker, :project, :priority).where(
-    query.statement).count
-   param_hash = query.project_id.nil? ? { :query_id => query_id } : { :project_id => query.project_id, :query_id => query_id }
- %>
-<% if query_limit.to_i > 0 %>
-  <h3>
-    <%= "#{l(:label_query)} : " %><%= link_to "#{query.name}", issues_path( param_hash ) %> (<%= "#{query_issues_count}" %>)
-  </h3>
-  <%= render :partial => 'issues/list_simple', :locals => { :issues => query_issues } %>
-<% else %>
-  <div>
-    <%= "#{l(:label_query)} : " %><%= link_to "#{query.name}", issues_path( param_hash ) %> (<%= "#{query_issues_count}" %>)
-  </div>
-<% end %>
+   if !query.nil?
+     query_issues = Issue.joins(:status, :tracker, :project, :priority).where(
+      query.statement).limit(query_limit).to_a
+     query_issues_count = Issue.joins(:status, :tracker, :project, :priority).where(
+      query.statement).count
+     param_hash = query.project_id.nil? ? { :query_id => query_id } : { :project_id => query.project_id, :query_id => query_id }
+   %>
+  <% if query_limit.to_i > 0 %>
+    <h3>
+      <%= "#{l(:label_query)} : " %><%= link_to "#{query.name}", issues_path( param_hash ) %> (<%= "#{query_issues_count}" %>)
+    </h3>
+    <%= render :partial => 'issues/list_simple', :locals => { :issues => query_issues } %>
+  <% else %>
+    <div>
+      <%= "#{l(:label_query)} : " %><%= link_to "#{query.name}", issues_path( param_hash ) %> (<%= "#{query_issues_count}" %>)
+    </div>
+  <% end %>
 
-<% content_for :header_tags do %>
-<%= auto_discovery_link_tag(:atom,
-                            {:controller => 'issues', :action => 'index', :set_filter => 1,
-                             :query_id => query_id, :format => 'atom', :key => User.current.rss_key},
-                            {:title => l(:label_query) + " : #{query.name}"}) %>
+  <% content_for :header_tags do %>
+  <%= auto_discovery_link_tag(:atom,
+                              {:controller => 'issues', :action => 'index', :set_filter => 1,
+                               :query_id => query_id, :format => 'atom', :key => User.current.rss_key},
+                              {:title => l(:label_query) + " : #{query.name}"}) %>
+  <% end %>
 <% end %>
