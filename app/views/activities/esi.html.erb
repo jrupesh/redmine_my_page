@@ -56,23 +56,24 @@
   </li>
 <% end %>
 </ul>
+
 <% if @project && @project.descendants.active.any? %>
-    <%= hidden_field_tag 'with_subprojects', 0, :id => nil %>
     <p><label><%= check_box_tag 'with_subprojects', 1, @with_subprojects %> <%=l(:label_subproject_plural)%></label></p>
+<% else %>
+    <%= hidden_field_tag 'with_subprojects', 0, :id => nil %>
 <% end %>
+
 <% if @project && @project.users.any? %>
     <p><%= label_tag 'user_id', l(:label_show_user_activity) %><%= select_tag 'user_id', options_for_select( @project.users.sort_by{|n| n.name}.collect{ |u| [u.name, u.id]  }, params[:user_id] ), :include_blank => true, :style => 'margin-left: 10px;width: 75%;' %></p>
   <% else %>
     <p><%= label_tag 'user_id', l(:label_show_user_activity) %><%= select_tag 'user_id', options_for_select( User.active.sort_by{|n| n.name}.collect{ |u| [u.name, u.id]  }, params[:user_id] ), :include_blank => true, :style => 'margin-left: 10px;width: 75%;' %></p>
-    <%#= hidden_field_tag('user_id', params[:user_id]) unless params[:user_id].blank? %>
 <% end %>
 
 <p><%= submit_tag l(:button_apply), :class => 'button-small', :name => nil %></p>
 <% end %>
 
-<% if Setting.plugin_esi["esi_enable"] == "true" && Setting.plugin_esi["esi_activity"] == "true" %>
 <%= render :partial => 'issues/sidebar' %>
-<% end %>
+
 <% end %>
 
 <% html_title(l(:label_activity), @author) -%>

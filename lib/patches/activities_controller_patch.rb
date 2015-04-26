@@ -63,7 +63,11 @@ module Patches
             respond_to do |format|
               format.html {
                 @events_by_day = events.group_by {|event| User.current.time_to_date(event.event_datetime)}
-                render :layout => false if request.xhr?
+                if request.xhr?
+                  render :template => 'activities/esi', :layout => false
+                else
+                  render :template => 'activities/esi'
+                end
               }
               format.atom {
                 title = l(:label_activity)
