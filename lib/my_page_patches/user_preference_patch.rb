@@ -1,4 +1,4 @@
-module Patches
+module MyPagePatches
   module UserPreferencePatch
 
     def self.included(base) # :nodoc:

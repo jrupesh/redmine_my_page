@@ -1,4 +1,4 @@
-module Patches
+module MyPagePatches
   module WelcomeControllerPatch
     def self.included(base) # :nodoc:
       base.extend(ClassMethods)

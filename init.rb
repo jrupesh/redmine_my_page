@@ -1,6 +1,8 @@
 require 'redmine'
-require 'patches/my_controller_patch'
-require 'patches/activities_controller_patch'
+require 'my_page_patches/my_controller_patch'
+require 'my_page_patches/activities_controller_patch'
+require 'my_page_patches/user_preference_patch'
+require 'my_page_patches/welcome_controller_patch'
 
 ActionDispatch::Callbacks.to_prepare do
   require_dependency 'hooks/redmine_my_page_hook'
@@ -16,10 +18,9 @@ Redmine::Plugin.register :redmine_my_page do
             :partial => 'settings/my_page_option_settings'
 
   Rails.configuration.to_prepare do
-    MyController.send :include, Patches::MyControllerPatch
-    ActivitiesController.send(:include, Patches::ActivitiesControllerPatch)
-    WelcomeController.send(:include, Patches::WelcomeControllerPatch)
-
-    UserPreference.send(:include, Patches::UserPreferencePatch)
+    MyController.send :include, MyPagePatches::MyControllerPatch
+    ActivitiesController.send(:include, MyPagePatches::ActivitiesControllerPatch)
+    WelcomeController.send(:include, MyPagePatches::WelcomeControllerPatch)
+    UserPreference.send(:include, MyPagePatches::UserPreferencePatch)
   end
 end

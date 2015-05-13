@@ -1,4 +1,4 @@
-module Patches
+module MyPagePatches
   module ActivitiesControllerPatch
 
     def self.included(base) # :nodoc:
