@@ -17,7 +17,9 @@ module MyPagePatches
       def landing_page_index
         @pref = User.current.pref
         return if @pref.landing_page.nil? || @pref.landing_page.blank?
-        if @pref.landing_page.start_with?('p-')
+        if @pref.landing_page.start_with?('o-')
+          redirect_to project_path( :id => @pref.landing_page.gsub("o-","").to_i )
+        elsif @pref.landing_page.start_with?('p-')
           redirect_to issues_path( :project_id => @pref.landing_page.gsub("p-","").to_i )
         elsif @pref.landing_page.start_with?('q-')
           query_id = @pref.landing_page.gsub("q-","").to_i
