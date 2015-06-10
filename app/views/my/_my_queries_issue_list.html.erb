@@ -1,12 +1,17 @@
 <% query = IssueQuery.find_by_id(query_id)
    if !query.nil?
-     query_issues = Issue.joins(:status, :tracker, :project, :priority).where(
-      query.statement).limit(query_limit).to_a
-     query_issues_count = Issue.joins(:status, :tracker, :project, :priority).where(
-      query.statement).count
-     param_hash = query.project_id.nil? ? { :query_id => query_id } : { :project_id => query.project_id, :query_id => query_id }
-   %>
-  <% if query_limit.to_i > 0 %>
+
+    query_issues_count = query.issue_count
+    param_hash = query.project_id.nil? ? { :query_id => query_id } : { :project_id => query.project_id, :query_id => query_id }
+
+    if query_limit.to_i > 0
+      sort_init(query.sort_criteria.empty? ? [['id', 'desc']] : query.sort_criteria)
+      sort_update(query.sortable_columns,"Query-#{query.id}")
+      query.sort_criteria = sort_criteria.to_a
+      query_issues = query.issues(:include => [:status, :tracker, :project, :priority],
+                                :order => sort_clause,
+                                :limit => query_limit.to_i)
+    %>
     <h3>
       <%= "#{l(:label_query)} : " %><%= link_to "#{query.name}", issues_path( param_hash ) %> (<%= "#{query_issues_count}" %>)
     </h3>
