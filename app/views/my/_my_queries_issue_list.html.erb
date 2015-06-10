@@ -6,9 +6,9 @@
 
     if query_limit.to_i > 0
       sort_init(query.sort_criteria.empty? ? [['id', 'desc']] : query.sort_criteria)
-      sort_update(query.sortable_columns,"Query-#{query.id}")
+      sort_update(query.sortable_columns,"Query-#{query.id}-#{sort_criteria.to_a.join("")}")
       query.sort_criteria = sort_criteria.to_a
-      query_issues = query.issues(:include => [:status, :tracker, :project, :priority],
+      query_issues = query.issues(:include => [:assigned_to, :tracker, :priority, :category, :fixed_version, :status, :project],
                                 :order => sort_clause,
                                 :limit => query_limit.to_i)
     %>
