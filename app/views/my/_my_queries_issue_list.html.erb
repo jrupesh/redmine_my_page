@@ -5,8 +5,9 @@
     param_hash = query.project_id.nil? ? { :query_id => query_id } : { :project_id => query.project_id, :query_id => query_id }
 
     if query_limit.to_i > 0
-      sort_init(query.sort_criteria.empty? ? [['id', 'desc']] : query.sort_criteria)
-      sort_update(query.sortable_columns,"Query-#{query.id}-#{sort_criteria.to_a.join("")}")
+      sort_array = query.sort_criteria.empty? ? [['id', 'desc']] : query.sort_criteria
+      sort_init(sort_array)
+      sort_update(query.sortable_columns,"Query-#{query.id}-#{sort_array.flatten.join("")}")
       query.sort_criteria = sort_criteria.to_a
       query_issues = query.issues(:include => [:assigned_to, :tracker, :priority, :category, :fixed_version, :status, :project],
                                 :order => sort_clause,
