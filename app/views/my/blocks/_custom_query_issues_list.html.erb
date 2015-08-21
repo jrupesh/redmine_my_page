@@ -3,22 +3,25 @@
   <div class="contextual">
     <% if my_cust_query[:query_ids].empty? && controller.action_name == 'page' %>
       <%= link_to l(:label_select_query), myqueryform_path(:type => 'my_cust_query'), :remote => true, :class => 'icon icon-add' %>
-    <% elsif my_cust_query[:query_ids].any? %>
-      <%= link_to l(:label_update_query), myqueryform_path(:type => 'my_cust_query'), :remote => true, :class => 'icon icon-edit' %>
+    <% elsif my_cust_query[:query_ids].any? && controller.action_name != 'page_layout' %>
+      <%= link_to l(:label_update_query), myqueryform_path(:type => 'my_cust_query'), :remote => true,
+      :id => 'update_link_my_cust_query', :class => 'icon icon-edit' %>
     <% end %>
   </div>
-  <% if my_cust_query[:query_ids].empty? %>
+  <% if my_cust_query[:query_ids].empty? || controller.action_name == 'page_layout' %>
     <h3><%= l(:label_my_custom_queries) %></h3>
   <% end %>
 <% end %>
 
-<div id='myqueryedit' style='display:none;'></div>
-<div id='mycustomquery'>
-  <% if !my_cust_query.nil? && my_cust_query[:query_ids].any? %>
-    <% my_cust_query[:query_ids].each do |queryid| %>
-      <%= render :partial => "my_queries_issue_list", :locals => { :query_id => queryid,
-              :query_limit => my_cust_query[:limit] } %>
-      <hr>
+<% if controller.action_name != 'page_layout' %>
+  <div id='myqueryedit' style='display:none;'></div>
+  <div id='mycustomquery'>
+    <% if !my_cust_query.nil? && my_cust_query[:query_ids].any? %>
+      <% my_cust_query[:query_ids].each do |queryid| %>
+        <%= render :partial => "my_queries_issue_list", :locals => { :query_id => queryid,
+                :query_limit => my_cust_query[:limit] } %>
+        <hr>
+      <% end -%>
     <% end -%>
-  <% end -%>
-</div>
+  </div>
+<% end -%>
