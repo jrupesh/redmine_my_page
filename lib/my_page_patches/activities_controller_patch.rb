@@ -50,7 +50,9 @@ module MyPagePatches
               filtered = Array.new
               events.each do |e|
                 if (e.is_a?(Journal) && issue_filter.include?(e.issue)) ||
-                   (e.is_a?(Issue)   && issue_filter.include?(e))
+                   (e.is_a?(Issue)   && issue_filter.include?(e)) ||
+                   (e.is_a?(TimeEntry) && issue_filter.include?(e.issue)) ||
+                   (e.is_a?(Changeset) && e.issues.to_a.any?{ |x| issue_filter.include?(x)} )
                   filtered << e
                 end
               end
