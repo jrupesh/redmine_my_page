@@ -1,5 +1,5 @@
 <% my_queries = IssueQuery.includes(:project).where( :user_id => User.current.id).order("projects.name ASC")
-if my_queries.any? %>
+if my_queries && my_queries.any? %>
   <table class="list issues">
     <thead><tr>
       <th>#</th>
