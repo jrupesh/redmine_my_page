@@ -17,3 +17,8 @@ ru:
 
   label_landing_page: Страница по умолчанию после логина
   label_default_my_page: Страницы
+    
+  custom_query_issues_list: Задачи из сохраненного запроса
+  activities: Активности
+  my_custom_queries: Мои сохраненные запросы
+
