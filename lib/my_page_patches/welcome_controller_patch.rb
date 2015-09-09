@@ -24,6 +24,7 @@ module MyPagePatches
         elsif @pref.landing_page.start_with?('q-')
           query_id = @pref.landing_page.gsub("q-","").to_i
           query = IssueQuery.find_by_id(query_id)
+          return if query.nil?
           param_hash = query.project_id.nil? ? { :query_id => query_id } : { :project_id => query.project_id, :query_id => query_id }
           redirect_to issues_path( param_hash )
         elsif @pref.landing_page.start_with?('my_page')
