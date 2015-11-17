@@ -18,7 +18,7 @@
   <div id='mycustomquery'>
     <% if !my_cust_query.nil? && !my_cust_query[:query_ids].nil? && my_cust_query[:query_ids].any? %>
       <% my_cust_query[:query_ids].each do |queryid| %>
-        <%= render :partial => "my_queries_issue_list", :locals => { :query_id => queryid,
+        <%= render :partial => "my/my_queries_issue_list", :locals => { :query_id => queryid,
                 :query_limit => my_cust_query[:limit] } %>
         <hr>
       <% end -%>
