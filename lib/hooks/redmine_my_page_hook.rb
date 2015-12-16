@@ -1,6 +1,16 @@
 module Hooks
   class RedmineMyPageHook < Redmine::Hook::ViewListener
+
     def view_my_account_preferences(context={})
+      user_preferences_hook(context)
+    end
+
+    def view_users_form_preferences(context={})
+      user_preferences_hook(context)
+    end
+
+    private
+    def user_preferences_hook(context={})
       user  = context[:user]
       f     = context[:form]
       s     = ''
@@ -27,5 +37,6 @@ module Hooks
 
       return s.html_safe
     end
+
   end
 end
