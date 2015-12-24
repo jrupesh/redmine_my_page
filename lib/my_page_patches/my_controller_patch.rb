@@ -34,15 +34,10 @@ module MyPagePatches
           @my_cust_query = @object == 'dashboard' ? @dashboard.my_activity : @pref.my_activity
         end
 
-        visible_queries_array = if IssueQuery.respond_to? (:esi_visible_queries)
-          IssueQuery.esi_visible_queries.
+        visible_queries_array = IssueQuery.visible.
             order("#{Project.table_name}.name ASC", "#{Query.table_name}.name ASC").
             pluck(:name, :id, "projects.name").to_a
-        else
-          IssueQuery.visible.
-            order("#{Project.table_name}.name ASC", "#{Query.table_name}.name ASC").
-            pluck(:name, :id, "projects.name").to_a
-        end
+
         @visible_queries = visible_queries_array.collect { |name, id, projectname| ["#{projectname.blank? ? "" : projectname + " - "}#{name}", id ] }
       end
 
