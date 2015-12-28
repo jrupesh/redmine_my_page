@@ -1,6 +1,14 @@
 module Hooks
   class RedmineMyPageHook < Redmine::Hook::ViewListener
+    def view_users_form_preferences(context={})
+      user_langing_page_options(context)
+    end
+
     def view_my_account_preferences(context={})
+      user_langing_page_options(context)
+    end
+
+    def user_langing_page_options(context)
       user  = context[:user]
       f     = context[:form]
       s     = ''
