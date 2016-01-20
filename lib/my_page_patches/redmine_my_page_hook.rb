@@ -1,4 +1,4 @@
-module Hooks
+module MyPagePatches
   class RedmineMyPageHook < Redmine::Hook::ViewListener
     def view_users_form_preferences(context={})
       user_langing_page_options(context)
