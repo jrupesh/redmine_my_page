@@ -1,11 +1,11 @@
 <% if @vartype == 'my_cust_query' %>
   $( '#myqueryedit').html('<%= escape_javascript( render :partial => 'my_custom_form', :locals => { :custum_query => @my_cust_query,
-        :queries => @visible_queries, :formtype => @vartype  }) %>');
+        :queries => @visible_queries, :formtype => @vartype, :object => @object, :dashboard_id => @dashboard && @dashboard.id || 0 }) %>');
   $( '#myqueryedit').show();
   $( '#mycustomquery').hide();
 <% else %>
   $( '#myactivityedit').html('<%= escape_javascript( render :partial => 'my_custom_form', :locals => { :custum_query => @my_cust_query,
-        :queries => @visible_queries, :formtype => @vartype }) %>');
+        :queries => @visible_queries, :formtype => @vartype, :object => @object, :dashboard_id => @dashboard && @dashboard.id || 0 }) %>');
   $( '#myactivityedit').show();
   $( '#myactivities').hide();
 <% end -%>

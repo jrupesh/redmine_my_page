@@ -1,4 +1,6 @@
 <%= form_tag(updatemyquery_path(:type => formtype), :id => "block-form", :method => :post) do %>
+  <%= hidden_field_tag 'object', object %>
+  <%= hidden_field_tag 'dashboard_id', dashboard_id %>
   <div class="box tabular">
     <% if formtype == 'my_cust_query' %>
       <p><%= label_tag "custom_limit", l(:label_custom_query_limit)  %>

@@ -17,7 +17,7 @@
   <div id='myactivities'>
     <% if !my_activity.nil? && my_activity[:query_ids].any? %>
       <% my_activity[:query_ids].each do |queryid| %>
-        <%= render :partial => "my_page_activities", :locals => { :query_id => queryid,
+        <%= render :partial => "my/my_page_activities", :locals => { :query_id => queryid,
                 :query_limit => my_activity[:limit] } %>
         <hr>
       <% end -%>
