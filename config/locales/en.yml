@@ -1,9 +1,5 @@
 # English strings go here for Rails i18n
 en:
-  activities: Activity
-  custom_query_issues_list: Issue lists from my queries
-  my_custom_queries: My queries
-
   label_my_activity_enable: Enable activity listing in My page
   em_my_activity_enable: Check this to enable Activity page listing in the users My page. Some bugs persist in the core Redmine activity fetcher.
 

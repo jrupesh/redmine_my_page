@@ -1,23 +1,19 @@
 # French strings go here for Rails i18n
 fr:
-  activities: Activit√©
-  custom_query_issues_list: Listes de demandes de mes rapports
-  my_custom_queries: Mes rapports
+  label_my_activity_enable: Activer l'affichage des activitÈs dans Ma page
+  em_my_activity_enable: Cocher cette option pour activer l'affichage des activitÈs dans la page personnalisÈ des utilisateurs. Des bugs sont encore prÈsents dans cette fonctionnalitÈ.
 
-  label_my_activity_enable: Activer l'affichage des activit√©s dans Ma page
-  em_my_activity_enable: Cocher cette option pour activer l'affichage des activit√©s dans la page personnalis√© des utilisateurs. Des bugs sont encore pr√©sents dans cette fonctionnalit√©.
-
-  label_select_query: S√©lectionner un rapport
+  label_select_query: SÈlectionner un rapport
   label_update_query: Changer de rapport
-  label_my_custom_queries: Rapport personnalis√©
-  label_select_activities: S√©lectionner un type d'activit√©
-  label_update_activities: Changer de type d'activit√©
-  label_my_activities: Activit√©
+  label_my_custom_queries: Rapport personnalisÈ
+  label_select_activities: SÈlectionner un type d'activitÈ
+  label_update_activities: Changer de type d'activitÈ
+  label_my_activities: ActivitÈ
 
-  label_activity_not_enabled: L'affichage des activit√©s dans Ma page n'est pas activ√©.
+  label_activity_not_enabled: L'affichage des activitÈs dans Ma page n'est pas activÈ.
 
-  label_custom_queries: S√©lectionner un rapport
-  label_custom_query_limit: Limiter la liste des demandes √†
+  label_custom_queries: SÈlectionner un rapport
+  label_custom_query_limit: Limiter la liste des demandes ‡
 
-  label_landing_page: Page par d√©faut apr√®s la connexion
+  label_landing_page: Page par dÈfaut aprËs la connexion
   label_default_my_page: Pages

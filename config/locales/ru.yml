@@ -1,9 +1,5 @@
 # Russian strings go here for Rails i18n
 ru:
-  activities: Активности
-  custom_query_issues_list: Список задач моих запросов
-  my_custom_queries: Мои сохранённые запросы
-
   label_my_activity_enable: Включить отчет об активностях на Моей странице.
   em_my_activity_enable: Поставьте галочку чтобы включить отчет об активностях на "Моя страница" всех пользователей. Есть некоторые баги, связанные с ядром Redmine.
 
