@@ -8,6 +8,8 @@ module MyPagePatches
 
       base.class_eval do
         unloadable
+        helper :queries
+        base.send(:include, QueriesHelper)
         helper :sort
         base.send(:include, SortHelper)
       end

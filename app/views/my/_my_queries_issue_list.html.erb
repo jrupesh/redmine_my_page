@@ -2,6 +2,7 @@
    if !query.nil?
 
     query_issues_count = query.issue_count
+    query_issue_count_by_group = query.issue_count_by_group
     param_hash = query.project_id.nil? ? { :query_id => query_id } : { :project_id => query.project_id, :query_id => query_id }
 
     if query_limit.to_i > 0
@@ -16,7 +17,10 @@
     <h3>
       <%= "#{l(:label_query)} : " %><%= link_to "#{query.name}", issues_path( param_hash ) %> (<%= "#{query_issues_count}" %>)
     </h3>
-    <%= render :partial => 'issues/list_simple', :locals => { :issues => query_issues } %>
+    <%= render :partial => 'issues/list_simple', :locals => { :issues => query_issues, 
+                                                              :@query => query, 
+                                                              :query => query, 
+                                                              :@issue_count_by_group => query_issue_count_by_group } %>
   <% else %>
     <div>
       <%= "#{l(:label_query)} : " %><%= link_to "#{query.name}", issues_path( param_hash ) %> (<%= "#{query_issues_count}" %>)
