@@ -17,7 +17,7 @@
     <h3>
       <%= "#{l(:label_query)} : " %><%= link_to "#{query.name}", issues_path( param_hash ) %> (<%= "#{query_issues_count}" %>)
     </h3>
-    <%= render :partial => 'issues/list_simple', :locals => { :issues => query_issues, 
+    <%= render :partial => 'issues/list', :locals => { :issues => query_issues, 
                                                               :@query => query, 
                                                               :query => query, 
                                                               :@issue_count_by_group => query_issue_count_by_group } %>
