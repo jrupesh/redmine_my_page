@@ -1,0 +1,19 @@
+# French strings go here for Rails i18n
+fr:
+  label_my_activity_enable: Activer l'affichage des activités dans Ma page
+  em_my_activity_enable: Cocher cette option pour activer l'affichage des activités dans la page personnalisé des utilisateurs. Des bugs sont encore présents dans cette fonctionnalité.
+
+  label_select_query: Sélectionner un rapport
+  label_update_query: Changer de rapport
+  label_my_custom_queries: Rapport personnalisé
+  label_select_activities: Sélectionner un type d'activité
+  label_update_activities: Changer de type d'activité
+  label_my_activities: Activité
+
+  label_activity_not_enabled: L'affichage des activités dans Ma page n'est pas activé.
+
+  label_custom_queries: Sélectionner un rapport
+  label_custom_query_limit: Limiter la liste des demandes à
+
+  label_landing_page: Page par défaut après la connexion
+  label_default_my_page: Pages
