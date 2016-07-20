@@ -1,0 +1,23 @@
+# German strings go here for Rails i18n
+de:
+  activities: Aktivität
+  custom_query_issues_list: Ticketliste aus meinen benutzerdefinierten Abfragen
+  my_custom_queries: Benutzerdefinierte Abfragen
+
+  label_my_activity_enable: Aktivitätsliste auf 'Meine Seite' einschalten.
+  em_my_activity_enable: Aktivitätsliste für jeden Nutzer aktivieren. 
+
+  label_select_query: Abfrage auswählen
+  label_update_query: Auswahl aktualisieren
+  label_my_custom_queries: Benutzerdefinierte Abfragen
+  label_select_activities: Aktivitäten auswählen
+  label_update_activities: Aktivitätsauswahl aktualisieren
+  label_my_activities: Aktivität
+
+  label_activity_not_enabled: Aktivitätsliste auf 'Meine Seite' ist ausgeschaltet.
+
+  label_custom_queries: Abfrage auswählen
+  label_custom_query_limit: Ticketliste beschränken
+
+  label_landing_page: Startseite nach dem Einloggen
+  label_default_my_page: Seiten
