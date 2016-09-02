@@ -12,7 +12,7 @@ Redmine::Plugin.register :redmine_my_page do
   name 'My Page Customization'
   author 'Rupesh J'
   description 'Adds additional options to the My Page of users.\nCustom Queries and Activities ( filtered ) will be shown in a single page.'
-  version '0.1.9'
+  version '0.1.10'
 
   settings :default => { 'my_activity_enable' => false },
             :partial => 'settings/my_page_option_settings'

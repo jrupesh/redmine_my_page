@@ -1,0 +1,22 @@
+ru:
+  label_my_activity_enable: Включить отчет об активностях на Моей странице.
+  em_my_activity_enable: Поставьте галочку чтобы включить отчет об активностях на "Моя страница" всех пользователей. Есть некоторые баги, связанные с ядром Redmine.
+
+  label_select_query: Выбрать запросы
+  label_update_query: Обновить выбор запроса
+  label_my_custom_queries: Сохраненные запросы
+  label_select_activities: Выберите активности
+  label_update_activities: Обновить выбор активностей
+  label_my_activities: Активности
+
+  label_activity_not_enabled: Отчет об активности выключен
+
+  label_custom_queries: Выбрать запрос
+  label_custom_query_limit: Ограничение для показа
+
+  label_landing_page: Страница по умолчанию после логина
+  label_default_my_page: Страницы
+
+  custom_query_issues_list: Задачи из сохраненного запроса
+  activities: Активности
+  my_custom_queries: Мои сохраненные запросы
