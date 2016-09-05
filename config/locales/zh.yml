@@ -1,0 +1,24 @@
+# Simplified Chinese strings go here for Rails i18n
+zh:
+  activities: 活动
+  custom_query_issues_list: 我的自定义查询中的问题列表
+  my_custom_queries: 我的自定义查询
+
+  label_my_activity_enable: 在我的工作台中启用活动列表。
+  em_my_activity_enable: 勾选此项在用户的工作台中启用活动列表页。您需要配置在Redmine的核心代码配置特定参数才可以使用该功能。
+
+  label_select_query: Select Queries
+  label_update_query: 更新所选的查询
+  label_my_custom_queries: 我的自定义查询
+  label_select_activities: 选择活动
+  label_update_activities: 更新所选的活动
+  label_my_activities: 活动
+  label_show_user_activity: For User
+  
+  label_activity_not_enabled: 我的工作台中的活动列表未启用。
+
+  label_custom_queries: 选择查询
+  label_custom_query_limit: 问题列表限制
+
+  label_landing_page: 登陆后默认首页
+  label_default_my_page: 页面
