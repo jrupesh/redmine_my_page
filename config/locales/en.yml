@@ -14,6 +14,7 @@ en:
   label_update_activities: Update Activity Selection
   label_my_activities: Activity
   label_show_user_activity: For User
+  label_project_issues: Issue List of Project
   
   label_activity_not_enabled: Activity Listing in My Page is not enabled.
 

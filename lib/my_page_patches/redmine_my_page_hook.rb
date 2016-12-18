@@ -17,15 +17,25 @@ module MyPagePatches
       # 1) Issue List of a project
       # 2) Custom Query Issue List.
       # 3) My Page
-      projects = Project.visible.includes(:enabled_modules).
+      projects = Project.active.visible.sorted.includes(:enabled_modules).
           select { |p| p if p.module_enabled?("issue_tracking") }
 
       selection_options = [[l(:label_default_my_page), [ [l(:label_my_page), "my_page"]] + projects.
-                    map { |p| ["Overview - #{p.name}", "o-#{p.id}" ] } ]]
-      selection_options += [[ 'Issue List of Project', projects.
+                    map { |p| ["#{l(:label_overview)} - #{p.name}", "o-#{p.id}" ] } ]]
+      selection_options += [[ l(:label_project_issues), projects.
                     map { |p| ["#{p.name}", "p-#{p.id}" ] }]]
-      selection_options += [[ 'Custom Query', IssueQuery.where( :user_id => User.current.id, :project_id => Project.visible.pluck(:id) ).
+      selection_options += [[ l(:label_query), IssueQuery.visible.
                     pluck(:name,:id).map { |name,id| ["#{name}", "q-#{id}" ] }]]
+
+      # Add to select options the Agile project tabs if plugin exists.
+      if Redmine::Plugin.installed?(:redmine_agile)
+        agile_projects = Project.active.visible.sorted.includes(:enabled_modules).
+            select { |p| p if p.module_enabled?("agile") }
+        selection_options += [[ "#{l(:label_agile)} #{l(:field_project)}" , agile_projects.
+                      map { |p| ["#{p.name}", "ap-#{p.id}" ] }]] if agile_projects.any?
+        selection_options += [[ l(:label_agile_board), AgileQuery.visible.
+                      pluck(:name,:id).map { |name,id| ["#{name}", "aq-#{id}" ] }]] if AgileQuery.visible.any?
+      end
 
       s << "<p>"
       s << label_tag( "pref_landing_page", l(:label_landing_page) )
