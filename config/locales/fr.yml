@@ -1,0 +1,24 @@
+# French strings go here for Rails i18n
+fr:
+  activities: Activité
+  custom_query_issues_list: Listes de demandes depuis mes requêtes
+  my_custom_queries: Mes Requêtes
+
+  label_my_activity_enable: Activer la liste des activités dans MyPage.
+  em_my_activity_enable: Cochez cette case pour activer la liste de la page d'activité des utilisateurs dans MyPage. Certains bugs persistent dans le flux d'activité principal de Redmine.
+
+  label_select_query: Sélectionner les Requêtes
+  label_update_query: Mettre à jour la Sélection de Requêtes
+  label_my_custom_queries: Requêtes Personnalisées
+  label_select_activities: Sélectionner les Activités
+  label_update_activities: Mettre à jour la Sélection d'Activités
+  label_my_activities: Activité
+  label_show_user_activity: Pour l'Utilisateur
+  
+  label_activity_not_enabled: Liste d'Activité dans MyPage n'est pas activé.
+
+  label_custom_queries: Sélectionner la Requête
+  label_custom_query_limit: Limite Liste de Demandes
+
+  label_landing_page: Page par Défaut après Connexion
+  label_default_my_page: Pages
