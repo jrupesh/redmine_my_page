@@ -3,9 +3,9 @@
   <% if !my_activity.nil? %>
     <div class="contextual">
       <% if my_activity[:query_ids].empty? && controller.action_name == 'page' %>
-        <%= link_to l(:label_select_activities), myqueryform_path(:type => 'my_activity'), :remote => true, :class => 'icon icon-add' %>
+        <%= link_to l(:label_select_activities), mycustomqueryform_path(:type => 'my_activity'), :remote => true, :class => 'icon icon-add' %>
       <% elsif my_activity[:query_ids].any? %>
-        <%= link_to l(:label_update_activities), myqueryform_path(:type => 'my_activity'), :remote => true, :class => 'icon icon-edit' %>
+        <%= link_to l(:label_update_activities), mycustomqueryform_path(:type => 'my_activity'), :remote => true, :class => 'icon icon-edit' %>
       <% end %>
     </div>
     <% if my_activity[:query_ids].empty? %>
