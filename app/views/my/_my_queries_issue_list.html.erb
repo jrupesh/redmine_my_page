@@ -1,6 +1,10 @@
-<% query = IssueQuery.find_by_id(query_id)
-   if !query.nil?
+<div class="contextual">
+  <%= link_to_function l(:label_options), "$('##{block}-settings').toggle();", :class => 'icon-only icon-settings', :title => l(:label_options) %>
+</div>
 
+<% query = IssueQuery.find_by_id(query_id)
+  if !query.nil? && query.issues.any?
+    query.column_names = settings[:columns] if settings && settings[:columns]
     query_issues_count = query.issue_count
     param_hash = query.project_id.nil? ? { :query_id => query_id } : { :project_id => query.project_id, :query_id => query_id }
 
@@ -8,9 +12,32 @@
       query_issues = query.issues(:limit => query_limit.to_i)
     %>
     <h3>
-      <%= "#{l(:label_query)} : " %><%= link_to "#{query.name}", issues_path( param_hash ) %> (<%= "#{query_issues_count}" %>)
+      <%= "#{query.project} |" if query.project %>
+      <%= link_to query.name, _project_issues_path(query.project, query.as_params) %>
+      (<%= query_issues_count %>)
     </h3>
-    <%= render :partial => 'issues/list_simple', :locals => { :issues => query_issues } %>
+
+    <div id="<%= block %>-settings" style="display:none;">
+      <%= form_tag(my_page_path, :remote => true) do %>
+          <div class="box">
+            <%= render_query_columns_selection(query, :name => "settings[#{block}][columns]") %>
+          </div>
+          <p>
+            <%= submit_tag l(:button_save) %>
+            <%= link_to_function l(:button_cancel), "$('##{block}-settings').toggle();" %>
+          </p>
+      <% end %>
+    </div>
+
+    <%= render :partial => 'issues/list',
+               :locals => {
+                   :issues => query_issues,
+                   :query => query,
+                   :query_options => {
+                       :sort_param => "settings[#{block}][sort]",
+                       :sort_link_options => {:method => :post, :remote => true}
+                   }
+               } %>
   <% else %>
     <div>
       <%= "#{l(:label_query)} : " %><%= link_to "#{query.name}", issues_path( param_hash ) %> (<%= "#{query_issues_count}" %>)
@@ -18,9 +45,10 @@
   <% end %>
 
   <% content_for :header_tags do %>
-  <%= auto_discovery_link_tag(:atom,
-                              {:controller => 'issues', :action => 'index', :set_filter => 1,
-                               :query_id => query_id, :format => 'atom', :key => User.current.rss_key},
-                              {:title => l(:label_query) + " : #{query.name}"}) %>
+     <%= auto_discovery_link_tag(:atom,
+          _project_issues_path(query.project, query.as_params.merge(:format => 'atom', :key => User.current.rss_key)),
+          {:title => query.name}) %>
   <% end %>
-<% end %>
+  <% else %>
+    <p class="nodata"><%= l(:label_no_data) %></p>
+  <% end %>

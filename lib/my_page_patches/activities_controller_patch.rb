@@ -2,17 +2,14 @@ module MyPagePatches
   module ActivitiesControllerPatch
 
     def self.included(base) # :nodoc:
-      base.extend(ClassMethods)
       base.send(:include, InstanceMethods)
 
       base.class_eval do
         unloadable
         helper :issues
+        helper :queries
         alias_method_chain :index, :esi
       end
-    end
-
-    module ClassMethods
     end
 
     module InstanceMethods

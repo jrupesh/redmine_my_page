@@ -28,7 +28,7 @@
     <% if !my_cust_query.nil? && !my_cust_query[:query_ids].nil? && my_cust_query[:query_ids].any? %>
       <% my_cust_query[:query_ids].each do |queryid| %>
         <%= render :partial => "my/my_queries_issue_list", :locals => { :query_id => queryid,
-                :query_limit => my_cust_query[:limit] } %>
+                :query_limit => my_cust_query[:limit], :user => user, :settings => settings, :block => block } %>
         <hr>
       <% end -%>
     <% end -%>

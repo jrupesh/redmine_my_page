@@ -1,16 +1,12 @@
 module MyPagePatches
   module WelcomeControllerPatch
     def self.included(base) # :nodoc:
-      base.extend(ClassMethods)
       base.send(:include, InstanceMethods)
 
       base.class_eval do
         unloadable
         before_filter :landing_page_index, :only => :index
       end
-    end
-
-    module ClassMethods
     end
 
     module InstanceMethods

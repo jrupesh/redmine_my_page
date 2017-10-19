@@ -2,15 +2,12 @@ module MyPagePatches
   module UserPreferencePatch
 
     def self.included(base) # :nodoc:
-      base.extend(ClassMethods)
       base.send(:include, InstanceMethods)
 
       base.class_eval do
         unloadable
+        safe_attributes 'landing_page', 'my_activity', 'my_cust_query'
       end
-    end
-
-    module ClassMethods
     end
 
     module InstanceMethods
