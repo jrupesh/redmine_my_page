@@ -14,7 +14,7 @@ Redmine::Plugin.register :redmine_my_page do
   description 'Adds additional options to the My Page of users.\nCustom Queries and Activities ( filtered ) will be shown in a single page.'
   version '0.1.11'
 
-  settings :default => { 'my_activity_enable' => false },
+  settings :default => { 'my_activity_enable' => 0 },
             :partial => 'settings/my_page_option_settings'
 
   Rails.configuration.to_prepare do
