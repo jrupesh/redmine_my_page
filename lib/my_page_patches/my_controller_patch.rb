@@ -1,15 +1,7 @@
-require_dependency 'sort_helper'
-
 module MyPagePatches
   module MyControllerPatch
     def self.included(base) # :nodoc:
       base.send(:include, InstanceMethods)
-
-      base.class_eval do
-        unloadable
-        helper :sort
-        base.send(:include, SortHelper)
-      end
     end
 
     module InstanceMethods

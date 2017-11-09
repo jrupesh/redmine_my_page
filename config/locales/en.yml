@@ -23,3 +23,6 @@ en:
 
   label_landing_page: Default Page after login
   label_default_my_page: Pages
+
+  label_homelink_override: Override home link to users landing page
+  label_my_landing_page: My landing page

@@ -22,3 +22,6 @@ fr:
 
   label_landing_page: Page par Défaut après Connexion
   label_default_my_page: Pages
+
+  label_homelink_override: Remplacer le lien d'accueil vers ma page de destination
+  label_my_landing_page: Ma page de destination

@@ -20,3 +20,6 @@ ru:
   custom_query_issues_list: Задачи из сохраненного запроса
   activities: Активности
   my_custom_queries: Мои сохраненные запросы
+
+  label_homelink_override: Переопределить домашнюю ссылку на мою целевую страницу
+  label_my_landing_page: Моя целевая страница

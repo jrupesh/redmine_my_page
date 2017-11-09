@@ -4,3 +4,7 @@
   <br />
   <em><%= l(:em_my_activity_enable) %></em>
 </p>
+<p>
+  <label><%= l(:label_homelink_override) %></label>
+  <%= check_box_tag 'settings[homelink_override]', 1, settings.present? && settings['homelink_override'] == '1' %>
+</p>

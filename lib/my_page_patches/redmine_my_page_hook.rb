@@ -8,6 +8,22 @@ module MyPagePatches
       user_langing_page_options(context)
     end
 
+    def controller_account_success_authentication_after(context={})
+      return unless context[:user].present?
+
+      pref = context[:user].pref
+      return if pref.landing_page.nil? || pref.landing_page.blank?
+
+      begin
+        cur_back_url = URI.parse(context[:hook_caller].params['back_url'])
+        return unless cur_back_url.path == home_url
+      rescue
+        Rails.logger.debug('redmine_my_page: Invalid back URL')
+      end
+      ret_url = MypageHelper::user_pref_url(self, pref)
+      context[:hook_caller].params['back_url'] = ret_url if ret_url.present?
+    end
+
     def user_langing_page_options(context)
       user  = context[:user]
       f     = context[:form]

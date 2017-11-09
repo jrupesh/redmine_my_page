@@ -21,3 +21,6 @@ de:
 
   label_landing_page: Startseite nach dem Einloggen
   label_default_my_page: Seiten
+
+  label_homelink_override: Den Home-Link auf meiner Zielseite überschreiben
+  label_my_landing_page: Meine Zielseite
