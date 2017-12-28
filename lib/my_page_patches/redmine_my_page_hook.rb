@@ -53,6 +53,14 @@ module MyPagePatches
                       pluck(:name,:id).map { |name,id| ["#{name}", "aq-#{id}" ] }]] if AgileQuery.visible.any?
       end
 
+      # Add to select options the Dashboard project tabs if plugin exists.
+      if Redmine::Plugin.installed?(:redmine_dashboard)
+        rdb_projects = Project.active.visible.sorted.includes(:enabled_modules).
+            select { |p| p if p.module_enabled?("dashboard") }
+        selection_options += [[ "#{l(:project_module_dashboard)} #{l(:field_project)}" , rdb_projects.
+                      map { |p| ["#{p.name}", "rdb-#{p.id}" ] }]] if rdb_projects.any?
+      end
+
       s << "<p>"
       s << label_tag( "pref_landing_page", l(:label_landing_page) )
       s << select_tag( "pref[landing_page]", grouped_options_for_select(selection_options,
