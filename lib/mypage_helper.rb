@@ -16,6 +16,7 @@ module MypageHelper
     elsif pref.landing_page.start_with?('my_page')
       ret_url = view.my_page_url
     end
+    return ret_url if ret_url.present?
     if Redmine::Plugin.installed?(:redmine_agile)
       if pref.landing_page.start_with?('ap-')
         home_project = Project.find_by_id(pref.landing_page.gsub("ap-","").to_i)
