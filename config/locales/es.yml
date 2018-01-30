@@ -1,0 +1,25 @@
+# Spanish strings go here for Rails i18n
+es:
+  activities: Actividad
+  custom_query_issues_list: Listado de tareas de mis consultas
+  my_custom_queries: Mis consultas personalizadas
+
+  label_my_activity_enable: Habilitar listado de actividad en Mi Página.
+  em_my_activity_enable: Seleccione para habilitar mostrar la página de Actividad en "Mi Página" de cada usuario. Puede haber algún bug.
+
+  label_select_query: Seleccione consulta
+  label_update_query: Actualice la selección de la consulta
+  label_my_custom_queries: Consulta personalizada
+  label_select_activities: Seleccione Actividades
+  label_update_activities: Actualice la selección de Actividad
+  label_my_activities: Actividad
+  label_show_user_activity: Para el usuario
+  label_project_issues: Listado de tareas de proyecto
+
+  label_activity_not_enabled: No está habilitado mostrar el listado de actividad en Mi Página.
+
+  label_custom_queries: Seleccione consulta personalizada
+  label_custom_query_limit: Limite del listado de tareas
+
+  label_landing_page: Página por defecto tras la identificación
+  label_default_my_page: Páginas
