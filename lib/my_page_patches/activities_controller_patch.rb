@@ -8,7 +8,11 @@ module MyPagePatches
         unloadable
         helper :issues
         helper :queries
-        alias_method_chain :index, :esi
+        if respond_to? :alias_method
+          alias_method :index, :index_with_esi
+        else
+          alias_method_chain :index, :esi
+        end
       end
     end
 
