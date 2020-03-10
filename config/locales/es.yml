@@ -23,3 +23,7 @@ es:
 
   label_landing_page: Página por defecto tras la identificación
   label_default_my_page: Páginas
+  
+  label_homelink_override: Anular enlace de inicio a la página de destino de los usuarios
+  label_my_landing_page: Mi página de destino
+  
