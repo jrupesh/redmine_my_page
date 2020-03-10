@@ -4,7 +4,15 @@ require 'my_page_patches/activities_controller_patch'
 require 'my_page_patches/user_preference_patch'
 require 'my_page_patches/welcome_controller_patch'
 
-ActionDispatch::Callbacks.to_prepare do
+def to_prepare(*args, &block)
+  if defined? ActiveSupport::Reloader
+    ActiveSupport::Reloader.to_prepare(*args, &block)
+  else
+    ActionDispatch::Callbacks.to_prepare(*args, &block)
+  end
+end
+
+to_prepare do
   require_dependency 'my_page_patches/redmine_my_page_hook'
 end
 
