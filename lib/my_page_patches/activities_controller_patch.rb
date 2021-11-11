@@ -9,6 +9,7 @@ module MyPagePatches
         helper :issues
         helper :queries
         if respond_to? :alias_method
+          alias_method :index_without_esi, :index
           alias_method :index, :index_with_esi
         else
           alias_method_chain :index, :esi
