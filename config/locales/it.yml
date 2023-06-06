@@ -1,0 +1,28 @@
+# Italian strings go here for Rails i18n
+it:
+  activities: Attività
+  custom_query_issues_list: Elenchi segnalazioni dalle mie Query personalizzate
+  my_custom_queries: Le mie Query
+
+  label_my_activity_enable: Abilita l'elenco attività nella Pagina personale.
+  em_my_activity_enable: Seleziona per attivare l'elenco attività nella Pagina personale utente. Permangono alcuni bug nel fetcher delle attività di Redmine.
+
+  label_select_query: Seleziona Query
+  label_update_query: Aggiorna selezione Query
+  label_my_custom_queries: Query personalizzate
+  label_select_activities: Seleziona attività
+  label_update_activities: Aggiorna la selezione attività
+  label_my_activities: Le mie attività
+  label_show_user_activity: Per l'utente
+  label_project_issues: Elenco segnalazioni del progetto
+
+  label_activity_not_enabled: L'elenco attività nella Pagina personale non è abilitato.
+
+  label_custom_queries: Selezione Query
+  label_custom_query_limit: Limita l'elenco segnalazioni
+
+  label_landing_page: Pagina di default dopo il login
+  label_default_my_page: Pagine
+
+  label_homelink_override: Sovrascrivi il link della pagina di home con quello della Home personalizzata
+  label_my_landing_page: Home personalizzata
